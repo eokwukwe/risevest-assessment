@@ -33,6 +33,6 @@ router.get(
   UserController.posts
 );
 
-router.get('topthree/comments', Auth, UserController.topUsersComment);
+router.get('/topthree/comments', Auth, UserController.topUsersComment);
 
 export default router;

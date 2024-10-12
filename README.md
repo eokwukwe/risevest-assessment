@@ -12,6 +12,8 @@
 
 - Run `npm run db:migrate` to run the migrations
 
+- Run `npm run generate:sql` to generate the sql file for the **Query Optimization Task**
+
 - Run `npm run dev` to start the server
 
 - Run `npm run test` to run the tests
