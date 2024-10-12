@@ -5,7 +5,9 @@ import config from 'config';
 
 export class Hashing {
   static async hash(plainTxt: string): Promise<string> {
-    return await bycrypt.hash(plainTxt, config.get('hashSaltFactor'));
+    const salt = config.get<number>('hashSaltFactor');
+
+    return await bycrypt.hash(plainTxt, +salt);
   }
 
   static async compare(plainTxt: string, hashedTxt: string): Promise<boolean> {

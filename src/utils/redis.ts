@@ -22,7 +22,7 @@ const connectRedis = async () => {
 
     Logger.info('Redis client connected successfully');
 
-    redisClient.set('check', 'Welcome to RISEVEST assessment API');
+    redisClient.set('check', 'Welcome to RISEVEST API');
   } catch (error) {
     Logger.error('An error occurred while connecting to Redis:', error);
 

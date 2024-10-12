@@ -1,14 +1,14 @@
+import config from 'config';
 import { expect } from '@japa/expect';
 import { apiClient } from '@japa/api-client';
 import { specReporter } from '@japa/spec-reporter';
 import { runFailedTests } from '@japa/run-failed-tests';
 import { processCliArgs, configure, run } from '@japa/runner';
 
-require('dotenv').config();
-
 import { createApp } from '../src/app';
+import { prisma } from '../src/utils';
 
-const port = 3333;
+const port = config.get<number>('port');
 
 // Start the server
 createApp(port);
@@ -38,6 +38,7 @@ configure({
     reporters: [specReporter()],
     importer: (filePath) => import(filePath),
     forceExit: true,
+    teardown: [async () => await prisma.$disconnect()],
   },
 });
 

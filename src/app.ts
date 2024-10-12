@@ -4,10 +4,8 @@ import rateLimiter from 'express-rate-limit';
 import { StatusCodes } from 'http-status-codes';
 import express, { Response, Request, NextFunction } from 'express';
 
-import { ErrorHandler, HttpError, Logger, redisClient } from './utils';
-// import apiRoutes from './routes';
-// import HttpError from './utils/http_error';
-// import redisClient from './utils/redis_client';
+import apiRoutes from './routes';
+import { Logger, ErrorHandler, HttpReponses, redisClient } from './utils';
 
 export function createApp(port: number) {
   const app = express();
@@ -32,13 +30,10 @@ export function createApp(port: number) {
   app.get('/api/check', async (req: Request, res: Response) => {
     const message = await redisClient.get('check');
 
-    res.status(StatusCodes.OK).json({
-      status: true,
-      message,
-    });
+    return HttpReponses.ok(res, { message: message! });
   });
 
-  // app.use('/api', apiRoutes);
+  app.use('/api', apiRoutes);
 
   // UNHANDLED ROUTE
   app.all('*', (req: Request, res: Response, next: NextFunction) => {
@@ -46,7 +41,7 @@ export function createApp(port: number) {
 
     Logger.error(message);
 
-    next(new HttpError(message, StatusCodes.NOT_FOUND));
+    return HttpReponses.notFound(res, message);
   });
 
   // GLOBAL ERROR HANDLER

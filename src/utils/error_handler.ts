@@ -1,36 +1,28 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { Logger } from './logger';
-import { HttpError } from './http_error';
+import { HttpReponses } from './http_reponses';
 
 export function ErrorHandler(
-  error: HttpError,
+  error: any,
   _req: Request,
   res: Response,
   next: NextFunction
 ) {
   const isProduction = process.env.NODE_ENV === 'production';
 
-  error.status = error.status || false;
-  error.statusCode = error.statusCode || 500;
+  const status = error.status || false;
+  const statusCode = error.statusCode || 500;
+  const message =
+    isProduction && statusCode === 500
+      ? 'Something went wrong.'
+      : error.message;
 
-  Logger.error({ error });
+  Logger.error(error.message);
 
-  if (isProduction && error.statusCode === 500) {
-    res.status(error.statusCode).json({
-      status: error.status,
-      message: 'Something went wrong.',
-    });
-  } else if (error.statusCode === 500) {
-    res.status(error.statusCode).json({
-      status: error.status,
-      message: error.message,
-      error,
-    });
-  } else {
-    res.status(error.statusCode).json({
-      status: error.status,
-      message: error.message,
-    });
-  }
+  return HttpReponses.response(res, {
+    code: statusCode,
+    message: message,
+    status: status,
+  });
 }

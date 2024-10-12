@@ -7,4 +7,4 @@ temp/
 
 .env
 *.log
-.env.*
+.env.test

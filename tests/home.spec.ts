@@ -6,6 +6,6 @@ test('Home Route', async ({ client, expect }) => {
   expect(response.status()).toBe(200);
   expect(response.body()).toEqual({
     status: true,
-    message: 'hello',
+    message: "Welcome to RISEVEST API",
   });
 });
