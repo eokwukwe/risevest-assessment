@@ -13,6 +13,7 @@
     "db:migrate": "npx prisma migrate dev --name init",
     "db:seed": "npx prisma db seed",
     "migrate": "npx prisma migrate deploy",
+    "generate:sql": "npx prisma generate --sql",
     "pretest": "npm run db:migrate:test",
     "test": "cross-env NODE_ENV=test dotenv -e .env.test -- node -r ts-node/register bin/test.ts",
     "db:migrate:test": "cross-env NODE_ENV=test dotenv -e .env.test -- npx prisma migrate dev --name init"

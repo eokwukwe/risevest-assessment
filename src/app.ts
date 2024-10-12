@@ -27,7 +27,7 @@ export function createApp(port: number) {
     })
   );
 
-  app.get('/api/check', async (req: Request, res: Response) => {
+  app.get('/', async (req: Request, res: Response) => {
     const message = await redisClient.get('check');
 
     return HttpReponses.ok(res, { message: message! });
