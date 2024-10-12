@@ -16,6 +16,12 @@
 
 - Run `npm run test` to run the tests
 
+> The code for the **Query Optimization Task** can be found at [/prisma/sql/getTopThreeUsersRecentComment.sql](./prisma/sql/getTopThreeUsersRecentComment.sql)
+
 ## API Endpoints
 
 [Postman Collection Public URL](https://documenter.getpostman.com/view/4676296/2s9Y5YR2me)
+
+## Hosted API URL
+
+[Hosted API URL](https://risevest-assessment.onrender.com)
