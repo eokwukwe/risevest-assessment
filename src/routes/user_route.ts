@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { Auth, ValidateRequestData } from '../middlewares';
-import { PostController, UserController } from '../../controllers';
+import { PostController, UserController } from '../controllers';
 import {
   CreatePostSchema,
   CreateUserSchema,

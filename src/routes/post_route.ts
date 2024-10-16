@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CreateCommentSchema } from '../schemas';
-import { PostController } from '../../controllers';
+import { PostController } from '../controllers';
 import { Auth, ValidateRequestData } from '../middlewares';
 
 const router = Router();

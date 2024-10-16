@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction as NextFn } from 'express';
-import { SessionService, UserService } from '../src/services';
+import { SessionService, UserService } from '../services';
 import { StatusCodes } from 'http-status-codes';
-import { Hashing, HttpReponses } from '../src/utils';
+import { Hashing, HttpReponses } from '../utils';
 
 export class AuthController {
   static async login(req: Request, res: Response, next: NextFn) {

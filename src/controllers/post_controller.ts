@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction as NextFn } from 'express';
 
-import { PostService } from '../src/services';
-import { HttpReponses } from '../src/utils';
+import { PostService } from '../services';
+import { HttpReponses } from '../utils';
 
 export class PostController {
   static async create(req: Request, res: Response, next: NextFn) {

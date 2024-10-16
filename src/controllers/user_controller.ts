@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction as NextFn } from 'express';
 
-import { HttpReponses } from '../src/utils';
-import { QueryParams } from '../src/schemas';
-import { UserService } from '../src/services';
+import { HttpReponses } from '../utils';
+import { QueryParams } from '../schemas';
+import { UserService } from '../services';
 
 export class UserController {
   static async all(req: Request, res: Response, next: NextFn) {
